@@ -1,5 +1,5 @@
 # PO-PWr-TEL-HW2
-Zadanie domowe nr 2, kliker
+Zadanie domowe nr 3, kliker
 
 Program typu Kliker
 
@@ -7,12 +7,17 @@ Zasady działania programu:
 1. Naciśnij klawisz "b", aby zebrać punkt.
 2. Po uzyskaniu 5 punktów, gracz awansuje na kolejny poziom.
 3. Aby wyjść z gry, naciśnij klawisz "e".
+4. Aby zapisać stan gry, naciśnij klawisz "s".
+5. Aby wczytać zapisany stan gry, naciśnij klawisz "l".
 
 ## Funkcje
 ### GameModel
 - `addPoint()`: Dodaje 1 punkt do aktualnej liczby punktów.
+- `setPoints(int newPoints)`: Ustawia liczbę punktów na nową wartość.
 - `getPoints() const`: Zwraca aktualną liczbę punktów.
-- `NextLevel() const`: Zwraca true, jeśli gracz uzyskał odpowiednią liczbę punktów, aby przejść na kolejny poziom. (czyli gdy reszta z dzielenia liczby uzyskanych punktów przez 5 jest równa 0)
+- `setLevel(int newLevel)`: Ustawia poziom na nową wartość.
+- `getLevel() const`: Zwraca aktualny poziom gracza.
+- `nextLevel() const`: Zwraca true, jeśli gracz uzyskał odpowiednią liczbę punktów, aby przejść na kolejny poziom. (czyli gdy reszta z dzielenia liczby uzyskanych punktów przez 5 jest równa 0)
 
 ### GameView
 - `printStartHeader()`: Wyświetla nagłówek powitalny gry.
@@ -21,6 +26,8 @@ Zasady działania programu:
 
 ### GameController
 - `launch()`: Rozpoczyna główną pętlę gry, obsługując wejście użytkownika i aktualizując stan gry.
+- `saveGame(const string& filename, int points, int level)`: Zapisuje stan gry (ilość punktów i poziom) do pliku o podanej nazwie.
+- `loadGame(const string& filename, GameModel& model)`: Wczytuje stan gry (ilość punktów i poziom) z pliku o podanej nazwie i przywraca go do modelu gry.
 
-Utworzona została również funkcja konwertująca liczby arabskie na rzymskie. 
-W każdym z warunków, idąc od liczb maksymalnie największych w zapisie rzymskim, dodaje do zapisu "Level: XXX" odpowiednie liczby rzymskie, a od liczby aktualnych punktów odejmuje odpowiednią liczbe. 
+### Konwersja liczb arabskich na rzymskie
+- Funkcja `romanNumeral(int num)`: Konwertuje liczbę całkowitą na zapis rzymski.
